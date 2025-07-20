@@ -19,6 +19,7 @@ def index():
         "service": "Discord Audio Controller",
         "version": "1.0.0",
         "endpoints": {
+            "/kill": "GET - Kill the server",
             "/status": "GET - Get current Discord audio status",
             "/toggle": "POST - Toggle mute state for Discord streams",
             "/mute": "POST - Mute all Discord streams",
