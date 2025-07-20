@@ -55,7 +55,7 @@ wheels = [
 ]
 
 [[package]]
-name = "deafen-python-test"
+name = "deafen-python"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

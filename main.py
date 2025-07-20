@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import os
 from flask import Flask, jsonify
 from flask_cors import CORS
 from discord_audio_controller import DiscordAudioController
@@ -25,6 +25,15 @@ def index():
             "/unmute": "POST - Unmute all Discord streams"
         }
     })
+
+@app.route("/kill", methods=["GET"])
+def kill():
+    app.logger.info("Killing Discord Audio Controller Web Server...")
+    os._exit(0)
+    return jsonify({
+        "success": True,
+        "message": "Server is shutting down."
+    }), 200
 
 
 @app.route("/status", methods=["GET"])
@@ -91,6 +100,7 @@ if __name__ == "__main__":
     print("Starting Discord Audio Controller Web Server...")
     print("Available endpoints:")
     print("  GET  /        - API information")
+    print("  GET  /kill    - Kill the server")
     print("  GET  /status  - Get Discord audio status")
     print("  POST /toggle  - Toggle Discord mute state")
     print("  POST /mute    - Mute Discord")
@@ -98,4 +108,4 @@ if __name__ == "__main__":
     print()
     
     # Run the Flask development server
-    app.run(host="0.0.0.0", port=18498, debug=True)
+    app.run(host="0.0.0.0", port=18498, debug=True, use_reloader=False)
