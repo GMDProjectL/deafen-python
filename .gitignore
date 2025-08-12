@@ -13,3 +13,4 @@ wheels/
 *dist
 *.bin
 nuitka*
+*.run
