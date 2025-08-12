@@ -12,7 +12,10 @@ class DiscordAudioController:
             r"Discord",
             r"discord",
             r"playStream",
-            r"recStream"
+            r"recStream",
+            r"RecordStream",
+            r"Playback",
+            r"Chromium"
         ]
     
     def _run_command(self, command: List[str]) -> Optional[str]:
