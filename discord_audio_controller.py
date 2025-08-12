@@ -26,7 +26,7 @@ class DiscordAudioController:
     
     def _get_sink_inputs(self) -> List[Dict[str, str]]:
         """Get all PulseAudio sink-inputs (playback streams)"""
-        output = self._run_command(["pactl", "list", "sink-inputs"])
+        output = self._run_command(["/usr/bin/pactl", "list", "sink-inputs"])
         if not output:
             return []
         
@@ -65,7 +65,7 @@ class DiscordAudioController:
     
     def _get_source_outputs(self) -> List[Dict[str, str]]:
         """Get all PulseAudio source-outputs (recording streams)"""
-        output = self._run_command(["pactl", "list", "source-outputs"])
+        output = self._run_command(["/usr/bin/pactl", "list", "source-outputs"])
         if not output:
             return []
         
@@ -173,10 +173,10 @@ class DiscordAudioController:
             
             # Choose correct command based on stream type
             if stream_type == "sink-input":
-                cmd = ["pactl", "set-sink-input-mute", stream_id, target_state]
+                cmd = ["/usr/bin/pactl", "set-sink-input-mute", stream_id, target_state]
                 stream_desc = "playback"
             elif stream_type == "source-output":
-                cmd = ["pactl", "set-source-output-mute", stream_id, target_state]
+                cmd = ["/usr/bin/pactl", "set-source-output-mute", stream_id, target_state]
                 stream_desc = "recording"
             else:
                 continue
@@ -230,10 +230,10 @@ class DiscordAudioController:
                 continue
             
             if stream_type == "sink-input":
-                cmd = ["pactl", "set-sink-input-mute", stream_id, target_state]
+                cmd = ["/usr/bin/pactl", "set-sink-input-mute", stream_id, target_state]
                 stream_desc = "playback"
             elif stream_type == "source-output":
-                cmd = ["pactl", "set-source-output-mute", stream_id, target_state]
+                cmd = ["/usr/bin/pactl", "set-source-output-mute", stream_id, target_state]
                 stream_desc = "recording"
             else:
                 continue

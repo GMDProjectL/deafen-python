@@ -3,6 +3,13 @@ import os
 from flask import Flask, jsonify
 from flask_cors import CORS
 from discord_audio_controller import DiscordAudioController
+from notifypy import Notify
+
+
+notification = Notify()
+notification.title = "Deafen server"
+notification.message = "Discord deafen server started."
+notification.send()
 
 
 app = Flask(__name__)

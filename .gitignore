@@ -12,3 +12,4 @@ wheels/
 *build
 *dist
 *.bin
+nuitka*
