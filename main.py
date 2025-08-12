@@ -4,6 +4,31 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from discord_audio_controller import DiscordAudioController
 from notifypy import Notify
+import sys
+
+bin_path = os.path.join(os.path.dirname(sys.argv[0]), sys.argv[0])
+
+
+print("Server is running here: ", bin_path)
+
+try:
+    desktop_entry_content = (
+    f'''[Desktop Entry]
+    Name=Auto-Deafen Server
+    GenericName=Auto-Deafen Server
+    Exec={bin_path}
+    Type=Application
+    Terminal=false
+    StartupNotify=true
+    ''')
+
+    with open(os.path.join(os.path.expanduser('~'), '.local', 'share', 'applications', 'Auto-Deafen Server.desktop'), 'w') as f:
+        f.write(desktop_entry_content)
+
+
+    os.system('update-desktop-database')
+except:
+    print("Desktop entry creation failed")
 
 
 notification = Notify()
