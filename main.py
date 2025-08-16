@@ -14,13 +14,13 @@ print("Server is running here: ", bin_path)
 try:
     desktop_entry_content = (
     f'''[Desktop Entry]
-    Name=Auto-Deafen Server
-    GenericName=Auto-Deafen Server
-    Exec={bin_path}
-    Type=Application
-    Terminal=false
-    StartupNotify=true
-    ''')
+Name=Auto-Deafen Server
+GenericName=Auto-Deafen Server
+Exec="{bin_path.replace('"', '\\"')}"
+Type=Application
+Terminal=false
+StartupNotify=true
+''')
 
     with open(os.path.join(os.path.expanduser('~'), '.local', 'share', 'applications', 'Auto-Deafen Server.desktop'), 'w') as f:
         f.write(desktop_entry_content)
